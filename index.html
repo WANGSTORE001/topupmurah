@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🏪 Wang Store - Top Up</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background:
+    radial-gradient(circle at top left, rgba(74,136,255,0.14), transparent 35%),
+    radial-gradient(circle at bottom right, rgba(255,214,107,0.14), transparent 35%),
+    linear-gradient(180deg, #0f1420 0%, #161d30 100%);
+  color: #fff;
+  padding: 16px;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+  padding: 18px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+}
+
+.logo-text {
+  font-size: 26px;
+  font-weight: 900;
+  color: #4ac8ff;
+  text-shadow: 0 0 8px rgba(74,200,255,0.8), 0 0 16px rgba(74,136,255,0.5);
+}
+
+.tagline {
+  font-size: 13px;
+  color: #b8e4ff;
+  margin-top: 6px;
+}
+
+.header-badge {
+  background: linear-gradient(135deg, #ffd66b, #ff9f1c);
+  color: #111;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 8px 14px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Hero Banner */
+.hero-banner {
+  position: relative;
+  padding: 22px;
+  border-radius: 16px;
+  margin-bottom: 28px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #1f3560, #3b70b8, #1f3560);
+}
+
+.hero-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255,255,255,0.06),
+    rgba(255,255,255,0.06) 2px,
+    transparent 4px
+  );
+  animation: scanMove 4s linear infinite;
+  z-index: 1;
+}
+
+@keyframes scanMove {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(120px); }
+}
+
+.hero-text {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.hero-text h2 {
+  font-size: 22px;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.hero-text p {
+  font-size: 14px;
+  color: #b8e4ff;
+}
+
+/* Grid Game Card */
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin-bottom: 32px;
+}
+
+.game-card {
+  position: relative;
+  background: #161d30;
+  border-radius: 18px;
+  overflow: hidden;
+  text-decoration: none;
+  color: #fff;
+  transition: 0.35s ease;
+  box-shadow: 0 4px 12px rgba(74,136,255,0.15);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.game-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 28px rgba(74,136,255,0.45);
+  border-color: #4a88ff;
+}
+
+.game-card:hover .game-img {
+  transform: scale(1.08);
+}
+
+.game-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: 0.35s ease;
+}
+
+.game-info {
+  padding: 16px;
+  background: linear-gradient(180deg, rgba(22,29,48,0), #161d30 100%);
+}
+
+.game-name {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 6px;
+  color: #fff;
+}
+
+.game-dev {
+  font-size: 13px;
+  color: #87ceff;
+}
+
+.game-badge {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: rgba(74,136,255,0.15);
+  color: #4ac8ff;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Section Title */
+.section-title {
+  font-size: 21px;
+  color: #6ab4ff;
+  margin: 36px 0 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Social Media */
+.social-box {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.social-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #1f3560;
+  padding: 14px 18px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #fff;
+  transition: 0.3s;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.social-item:hover {
+  background: #4a88ff;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(74,136,255,0.35);
+}
+
+.social-svg {
+  width: 22px;
+  height: 22px;
+  fill: #fff;
+}
+
+/* Footer Note */
+.footer-note {
+  text-align: center;
+  margin-top: 28px;
+  padding: 14px;
+  border-radius: 12px;
+  background: rgba(255,214,107,0.08);
+  border: 1px solid rgba(255,214,107,0.15);
+  color: #ffd66b;
+  font-size: 13px;
+}
+
+/* Responsif */
+@media (max-width: 600px) {
+  .game-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .game-img {
+    height: 160px;
+  }
+
+  .logo-text {
+    font-size: 22px;
+  }
+
+  .hero-text h2 {
+    font-size: 18px;
+  }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <header>
+    <div>
+      <div class="logo-text">🏪 WANG STORE</div>
+      <div class="tagline">Top Up Game Terpercaya & Cepat</div>
+    </div>
+    <div class="header-badge">OPEN 24/7</div>
+  </header>
+
+  <!-- Hero Banner -->
+  <div class="hero-banner">
+    <div class="hero-text">
+      <h2>⚡ Top Up Mobile Legends & Roblox</h2>
+      <p>Layanan cepat, harga transparan, dan proses otomatis</p>
+    </div>
+  </div>
+
+  <!-- Grid Game -->
+  <div class="game-grid">
+    <!-- ✅ Mobile Legends (Sudah pakai gambar 10th Anniversary) -->
+    <a href="https://wangstore001.github.io/pricelist_ml/" target="_blank" class="game-card">
+      <img class="game-img" src="https://i.imgur.com/9qY7XyY.jpg" alt="Mobile Legends">
+      <div class="game-info">
+        <div class="game-name">Mobile Legends</div>
+        <div class="game-dev">Moonton</div>
+        <div class="game-badge">Diamond</div>
+      </div>
+    </a>
+
+    <!-- Roblox -->
+    <a href="https://wangstore001.github.io/pricelist/" target="_blank" class="game-card">
+      <img class="game-img" src="https://www.google.com/search?client=ms-android-samsung-ss&hs=wOdB&sca_esv=eec074e50b367694&sxsrf=AKL5yDiGjx75xqeCXsb_Zo1KcfsgIHGoXw:1794202633338&udm=2&fbs=ACAhTvxdyhWQdAYwG4Lu4hJJc4sJKb1Ri2lFTbhRNVQ64D1zOlEBV5yh0ojs1kfRkEZUKiRVzuSwcpO9Whfj0YlY3vWEKf3_Ifeo66s697kCQCbcopcm2GTOhHJLPP-BTl_A9QsVEUcDorVopJpeamI88nFiaoagOtUu28J7oK8V8Ztm28m9z39P1FrDg8kzqI8XoKxbQETo3608UEr1XPukY4KLn4g5TzDv7gfPovRcij8eE0JHYDs&q=roblox&sa=X&sqi=2&ved=2ahUKEwilwvXUlfqXAxWqwTgGHezjHqwQtKgLegQIFRAB&biw=384&bih=699&dpr=2.81" alt="Roblox">
+      <div class="game-info">
+        <div class="game-name">Roblox</div>
+        <div class="game-dev">Roblox Corporation</div>
+        <div class="game-badge">Robux</div>
+      </div>
+    </a>
+  </div>
+
+  <!-- Social Media -->
+  <h2 class="section-title">📱 Hubungi Kami</h2>
+  <div class="social-box">
+    <!-- Instagram -->
+    <a href="https://instagram.com/GANTI_DENGAN_LINK_MU" target="_blank" class="social-item">
+      <svg class="social-svg" viewBox="0 0 24 24">
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.799 0 1.442-.645 1.442-1.44s-.643-1.44-1.442-1.44z"/>
+      </svg>
+      Instagram
+    </a>
+
+    <!-- TikTok -->
+    <a href="https://tiktok.com/@GANTI_DENGAN_LINK_MU" target="_blank" class="social-item">
+      <svg class="social-svg" viewBox="0 0 24 24">
+        <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.84 4.84 0 01-1.04-.2z"/>
+      </svg>
+      TikTok
+    </a>
+
+    <!-- Facebook -->
+    <a href="https://facebook.com/GANTI_DENGAN_LINK_MU" target="_blank" class="social-item">
+      <svg class="social-svg" viewBox="0 0 24 24">
+        <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+      </svg>
+      Facebook
+    </a>
+
+    <!-- Discord -->
+    <a href="https://discord.gg/GANTI_DENGAN_LINK_MU" target="_blank" class="social-item">
+      <svg class="social-svg" viewBox="0 0 24 24">
+        <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4977.8727-.6832 1.2495-2.6983-.4083-5.3588-.4083-7.9575 0-.1855-.3768-.4722-.8742-.6832-1.2495a.0741.0741 0 00-.0785-.0371A19.7913 19.7913 0 003.677 4.3698a.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0822.0822 0 00.0312.0561 19.7827 19.7827 0 005.0073 2.5286.0784.0784 0 00.0842-.0276c.3909-.5274.7315-1.1329 1.0176-1.7329a.076.076 0 00-.0416-.1057c-.5288-.1947-1.0659-.456-1.5605-.7695a.0693.0693 0 01-.0731-.0136.0752.0752 0 01-.0262-.0568c-.0124-.1987-.0361-.3943-.0666-.5883a.0757.0757 0 01.0214-.0686c.3476-.2458.7493-.5499 1.1363-.8317a.077.077 0 00-.0274.0615c.0062-.0975.0062-.195.0062-.2925a.0766.0766 0 00-.0274-.0615c-.387-.2818-.7887-.5859-1.1363-.8317a.0757.0757 0 01-.0214-.0686c.0305-.194.0542-.3896.0666-.5883a.0752.0752 0 01.0262-.0568.0693.0693 0 01-.0731-.0136c-.4946-.3134-1.0317-.5748-1.5605-.7695a.076.076 0 00-.0416-.1057c.2861-.6.6266-1.2055 1.0176-1.7329a.0784.0784 0 00-.0842-.0276 19.7827 19.7827 0 005.0073-2.5286.0822.0822 0 00-.0312-.0561c-.4182 4.4779.4342 9.012 3.5457 13.6603a.0699.0699 0 00.0321.0277zM8.02 15.3312c-1.1825 0-2.1457-1.0693-2.1457-2.3819 0-1.3125.947-2.3818 2.1457-2.3818 1.2108 0 2.1757 1.081 2.1457 2.3818 0 1.3126-.947 2.3819-2.1457 2.3819zm7.96 0c-1.1825 0-2.1457-1.0693-2.1457-2.3819 0-1.3125.947-2.3818 2.1457-2.3818 1.2108 0 2.1757 1.081 2.1457 2.3818 0 1.3126-.9349 2.3819-2.1457 2.3819z"/>
+      </svg>
+      Discord
+    </a>
+  </div>
+
+  <!-- Footer Note -->
+  <div class="footer-note">
+    ⚠️ Ini adalah demonstrasi desain untuk belajar saja — BUKAN layanan resmi Moonton maupun Roblox.
+  </div>
+
+</div>
+</body>
+</html>
