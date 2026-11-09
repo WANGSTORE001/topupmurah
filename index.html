@@ -64,28 +64,54 @@ header {
   letter-spacing: 1px;
 }
 
-/* Hero Banner */
-.hero-banner {
+/* ===== PREMIUM BANNER ===== */
+.premium-banner {
   position: relative;
-  padding: 22px;
-  border-radius: 16px;
+  padding: 26px;
+  border-radius: 22px;
   margin-bottom: 28px;
   overflow: hidden;
-  background: linear-gradient(135deg, #1f3560, #3b70b8, #1f3560);
+  background:
+    radial-gradient(circle at 20% 10%, rgba(255,214,107,0.18), transparent 28%),
+    radial-gradient(circle at 80% 20%, rgba(168,85,247,0.18), transparent 28%),
+    radial-gradient(circle at 50% 90%, rgba(74,136,255,0.14), transparent 32%),
+    linear-gradient(135deg, #111827, #1e293b, #111827);
+  border: 1px solid rgba(255,214,107,0.22);
+  box-shadow:
+    0 0 18px rgba(168,85,247,0.25),
+    0 0 34px rgba(255,214,107,0.12);
 }
 
-.hero-banner::before {
+.premium-banner::before {
   content: "";
   position: absolute;
   inset: 0;
   background: repeating-linear-gradient(
     0deg,
-    rgba(255,255,255,0.06),
-    rgba(255,255,255,0.06) 2px,
+    rgba(255,255,255,0.04),
+    rgba(255,255,255,0.04) 2px,
     transparent 4px
   );
   animation: scanMove 4s linear infinite;
   z-index: 1;
+}
+
+.premium-banner::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(
+    45deg,
+    rgba(255,214,107,0.12),
+    rgba(168,85,247,0.12),
+    rgba(74,136,255,0.12),
+    rgba(255,214,107,0.12)
+  );
+  background-size: 300% 300%;
+  animation: gradientShift 8s ease-in-out infinite;
+  border-radius: 24px;
+  z-index: 0;
+  filter: blur(12px);
 }
 
 @keyframes scanMove {
@@ -93,21 +119,107 @@ header {
   100% { transform: translateY(120px); }
 }
 
-.hero-text {
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.banner-glow-orb {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,214,107,0.18), transparent 35%);
+  top: -60px;
+  right: -40px;
+  filter: blur(18px);
+  animation: floatOrb 6s ease-in-out infinite;
+  z-index: 0;
+}
+
+@keyframes floatOrb {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-12px) scale(1.05); }
+}
+
+.banner-content {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   text-align: center;
 }
 
-.hero-text h2 {
-  font-size: 22px;
+.banner-king-icon {
+  font-size: 34px;
   margin-bottom: 8px;
-  color: #fff;
+  animation: bounceSoft 2.5s ease-in-out infinite;
 }
 
-.hero-text p {
-  font-size: 14px;
-  color: #b8e4ff;
+@keyframes bounceSoft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.banner-title {
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, #ffd66b, #ff9f1c, #a855f7, #4a88ff, #ffd66b);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: textShine 5s linear infinite;
+  margin-bottom: 8px;
+}
+
+@keyframes textShine {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+.banner-subtitle {
+  font-size: 15px;
+  color: #e0e7ff;
+  margin-bottom: 14px;
+}
+
+.banner-tagline {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 999px;
+  background: rgba(255,214,107,0.12);
+  border: 1px solid rgba(255,214,107,0.35);
+  color: #ffd66b;
+  font-size: 13px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 0 12px rgba(255,214,107,0.15);
+}
+
+.banner-stars {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.star-badge {
+  position: absolute;
+  color: rgba(255,214,107,0.85);
+  text-shadow: 0 0 8px rgba(255,214,107,0.45);
+  animation: twinkle 2s ease-in-out infinite;
+}
+
+.star-badge:nth-child(1) { left: 8%; top: 12%; animation-delay: 0s; }
+.star-badge:nth-child(2) { left: 22%; top: 18%; animation-delay: 0.3s; }
+.star-badge:nth-child(3) { right: 24%; top: 14%; animation-delay: 0.6s; }
+.star-badge:nth-child(4) { right: 10%; top: 22%; animation-delay: 0.9s; }
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.25; transform: scale(0.85); }
+  50% { opacity: 1; transform: scale(1.15); }
 }
 
 /* Grid Game Card */
@@ -221,6 +333,17 @@ header {
   fill: #fff;
 }
 
+.note {
+  text-align: center;
+  margin-top: 20px;
+  padding: 14px;
+  border-radius: 12px;
+  background: rgba(255,214,107,0.08);
+  border: 1px solid rgba(255,214,107,0.15);
+  color: #ffd66b;
+  font-size: 13px;
+}
+
 /* Footer Note */
 .footer-note {
   text-align: center;
@@ -248,8 +371,16 @@ header {
     font-size: 22px;
   }
 
-  .hero-text h2 {
-    font-size: 18px;
+  .banner-title {
+    font-size: 22px;
+  }
+
+  .banner-subtitle {
+    font-size: 13px;
+  }
+
+  .banner-king-icon {
+    font-size: 28px;
   }
 }
 </style>
@@ -266,17 +397,28 @@ header {
     <div class="header-badge">OPEN 24 JAM</div>
   </header>
 
-  <!-- Hero Banner -->
-  <div class="hero-banner">
-    <div class="hero-text">
-      <h2>⚡ Top Up Game Termurah Dan Terpercaya</h2>
-      <p>Layanan cepat, harga transparan, dan proses cepat</p>
+  <!-- Premium Banner Wang Store -->
+  <div class="premium-banner">
+    <div class="banner-glow-orb"></div>
+
+    <div class="banner-stars">
+      <span class="star-badge">✦</span>
+      <span class="star-badge">✧</span>
+      <span class="star-badge">✦</span>
+      <span class="star-badge">✧</span>
+    </div>
+
+    <div class="banner-content">
+      <div class="banner-king-icon">👑</div>
+      <h2 class="banner-title">WANG STORE</h2>
+      <p class="banner-subtitle">Top Up Game Termurah, Cepat & Terpercaya</p>
+      <span class="banner-tagline">⚡ OPEN 24 JAM ⚡</span>
     </div>
   </div>
 
   <!-- Grid Game -->
   <div class="game-grid">
-    <!-- ✅ Mobile Legends (Sudah pakai gambar 10th Anniversary) -->
+    <!-- ✅ Mobile Legends -->
     <a href="https://wangstore001.github.io/pricelist_ml/" target="_blank" class="game-card">
       <img class="game-img" src="https://cdn.discordapp.com/attachments/1506704452478832755/1569244866788196472/Screenshot_20261109_134318_Dola.jpg?ex=6af2c0ab&is=6af16f2b&hm=aa7fb2c06561e3114e0ef055bd6f6ab489ba91f843bc3de41694f9581f9c4d1b&" alt="Mobile Legends">
       <div class="game-info">
@@ -296,13 +438,13 @@ header {
   </div>
 
   <div class="content">
-    <h2>📱SOSIAL MEDIA ADMIN</h2>
+    <h2 class="section-title">📱 SOSIAL MEDIA ADMIN</h2>
 
     <div class="social-box">
       <!-- Instagram -->
       <a href="https://instagram.com/WangStoreOfficial" target="_blank" class="social-item">
         <svg class="social-svg" viewBox="0 0 24 24">
-          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.695-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.226 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.695-4.919-4.92-.058 1.265-.07 1.644-.07 4.849 0 3.204.013-3.583.07-4.849.149-3.226 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
         </svg>
         Instagram
       </a>
@@ -326,7 +468,7 @@ header {
       <!-- Discord -->
       <div class="social-item">
         <svg class="social-svg" viewBox="0 0 24 24">
-          <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4977.8727-.6832 1.2495-2.6983-.4083-5.3588-.4083-7.9575 0-.1855-.3768-.4722-.8742-.6832-1.2495a.0741.0741 0 00-.0785-.0371A19.7913 19.7913 0 003.677 4.3698a.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0822.0822 0 00.0312.0561 19.7827 19.7827 0 005.0073 2.5286.0784.0784 0 00.0842-.0276c.3909-.5274.7315-1.1329 1.0176-1.7329a.076.076 0 00-.0416-.1057c-.5288-.1947-1.0659-.456-1.5605-.7695a.0693.0693 0 01-.0731-.0136.0752.0752 0 01-.0262-.0568c-.0124-.1987-.0361-.3943-.0666-.5883a.0757.0757 0 01.0214-.0686c.3476-.2458.7493-.5499 1.1363-.8317a.077.077 0 00.0274-.0615c.0062-.0975.0062-.195.0062-.2925a.0766.0766 0 00-.0274-.0615c-.387-.2818-.7887-.5859-1.1363-.8317a.0757.0757 0 01-.0214-.0686c.0305-.194.0542-.3896.0666-.5883a.0752.0752 0 01.0262-.0568.0693.0693 0 01.0731-.0136c.4946-.3134 1.0317-.5748 1.5605-.7695a.076.076 0 00.0416-.1057c-.2861-.6-.6266-1.2055-1.0176-1.7329a.0784.0784 0 00-.0842-.0276 19.7827 19.7827 0 00-5.0073 2.5286.0822.0822 0 00-.0312.0561c-.4182 4.4779.4342 9.012 3.5457 13.6603a.0699.0699 0 00.0321.0277 19.7913 19.7913 0 004.8851 1.5152.0741.0741 0 00.0785-.0371c.211-.3753.4977-.8727.6832-1.2495 2.6983.4083 5.3588.4083 7.9575 0 .1855.3768.4722.8742.6832 1.2495a.0741.0741 0 00.0785.0371 19.7913 19.7913 0 004.8851-1.5152.0699.0699 0 00.0321-.0277c3.1115-4.6483 3.9639-9.1824 3.5457-13.6603a.0822.0822 0 00-.0312-.0561 19.7827 19.7827 0 00-5.0073-2.5286.0784.0784 0 00-.0842.0276c-.3909.5274-.7315 1.1329-1.0176 1.7329a.076.076 0 00.0416.1057c.5288.1947 1.0659.456 1.5605.7695a.0693.0693 0 01.0731.0136.0752.0752 0 01.0262.0568c.0124.1987.0361.3943.0666.5883a.0757.0757 0 01-.0214.0686c-.3476.2458-.7493.5499-1.1363.8317a.077.077 0 00-.0274.0615c-.0062.0975-.0062.195-.0062.2925a.0766.0766 0 00.0274.0615c.387.2818.7887.5859 1.1363.8317a.0757.0757 0 01.0214.0686c-.0305.194-.0542.3896-.0666.5883a.0752.0752 0 01-.0262.0568.0693.0693 0 01-.0731.0136c-.4946.3134-1.0317.5748-1.5605.7695a.076.076 0 00-.0416.1057c.2861.6.6266 1.2055 1.0176 1.7329a.0784.0784 0 00.0842.0276 19.7827 19.7827 0 005.0073-2.5286.0822.0822 0 00.0312-.0561c.4182-4.4779-.4342-9.012-3.5457-13.6603a.0699.0699 0 00-.0321-.0277zM8.02 15.3312c-1.1825 0-2.1457-1.0693-2.1457-2.3819 0-1.3125.947-2.3818 2.1457-2.3818 1.2108 0 2.1757 1.081 2.1457 2.3818 0 1.3126-.947 2.3819-2.1457 2.3819zm7.96 0c-1.1825 0-2.1457-1.0693-2.1457-2.3819 0-1.3125.947-2.3818 2.1457-2.3818 1.2108 0 2.1757 1.081 2.1457 2.3818 0 1.3126-.9349 2.3819-2.1457 2.3819z"/>
+          <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4977.8727-.6832 1.2495-2.6983-.4083-5.3588-.4083-7.9575 0-.1855-.3768-.4722-.8742-.6832-1.2495a.0741.0741 0 00-.0785-.0371A19.7913 19.7913 0 003.677 4.3698a.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0822.0822 0 00.0312.0561 19.7827 19.7827 0 005.0073 2.5286.0784.0784 0 00.0842-.0276c.3909-.5274.7315-1.1329 1.0176-1.7329a.076.076 0 00-.0416-.1057c-.5288-.1947-1.0659-.456-1.5605-.7695a.0693.0693 0 01-.0731-.0136.0752.0752 0 01-.0262-.0568c-.0124-.1987-.0361-.3943-.0666-.5883a.0757.0757 0 01.0214-.0686c.3476-.2458.7493-.5499 1.1363-.8317a.077.077 0 00.0274-.0615c.0062-.0975.0062-.195.0062-.2925a.0766.0766 0 00-.0274-.0615c-.387-.2818-.7887-.5859-1.1363-.8317a.0757.0757 0 01-.0214-.0686c.0305-.194.0542-.3896.0666-.5883a.0752.0752 0 01.0262-.0568.0693.0693 0 01.0731-.0136c.4946-.3134 1.0317-.5748 1.5605-.7695a.076.076 0 00.0416-.1057c.2861.6.6266 1.2055 1.0176 1.7329a.0784.0784 0 00-.0842.0276 19.7827 19.7827 0 005.0073-2.5286.0822.0822 0 00-.0312-.0561c-.4182 4.4779.4342 9.012 3.5457 13.6603a.0699.0699 0 00.0321.0277zM8.02 15.3312c-1.1825 0-2.1457-1.0693-2.1457-2.3819 0-1.3125.947-2.3818 2.1457-2.3818 1.2108 0 2.1757 1.081 2.1457 2.3818 0 1.3126-.947 2.3819-2.1457 2.3819zm7.96 0c-1.1825 0-2.1457-1.0693-2.1457-2.3819 0-1.3125.947-2.3818 2.1457-2.3818 1.2108 0 2.1757 1.081 2.1457 2.3818 0 1.3126-.9349 2.3819-2.1457 2.3819z"/>
         </svg>
         ciomuda
       </div>
@@ -335,6 +477,7 @@ header {
     <div class="note">
       ⚠️ Hanya gunakan akun resmi di atas untuk melakukan pemesanan! Waspada penipu yang mengatasnamakan WANG STORE
     </div>
+  </div>
 
 </div>
 </body>
